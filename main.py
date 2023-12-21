@@ -52,17 +52,17 @@ def go_through_lines(path):
 
 
 def m3u_path():
-    path = filedialog.askopenfilename(initialdir="/home/szymon/PycharmProjects/GitHub/m3u_copy",
+    path = filedialog.askopenfilename(initialdir="/",
                                       title="Choose a m3u file", filetypes=(("m3u files", "*.m3u"),))
     label_src.config(text="Source: "+path)
 
 
 def destination_path():
-    path = filedialog.askdirectory(initialdir="/home/szymon/PycharmProjects", title="Choose a destination directory")
+    path = filedialog.askdirectory(initialdir="/", title="Choose a destination directory")
     label_dest.config(text="Destination: "+path)
 
 
-def polaczone():
+def get_paths_and_copy():
     src = label_src.cget("text")
     src = src[src.rindex(" ")+1:]
     dest = label_dest.cget("text") + "/"
@@ -70,7 +70,7 @@ def polaczone():
     m3u_copy(src, dest)
 
 
-def polaczone2():
+def get_m3u_path_and_list_paths():
     m3u_path()
     src = label_src.cget("text")
     src = src[src.rindex(" ")+1:]
@@ -89,7 +89,7 @@ label_dest = tk.Label(window,
                       fg="blue")
 button_source = tk.Button(window,
                           text="Source",
-                          command=polaczone2)
+                          command=get_m3u_path_and_list_paths)
 button_destination = tk.Button(window,
                                text="Destination",
                                command=destination_path)
@@ -97,7 +97,7 @@ label_paths = tk.Label(window,
                        text="Paths:\n")
 button_copy = tk.Button(window,
                         text="Copy",
-                        command=polaczone)
+                        command=get_paths_and_copy)
 label_errors = tk.Label(window,
                         text="")
 label_finish = tk.Label(window,
