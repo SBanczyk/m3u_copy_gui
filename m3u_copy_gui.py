@@ -112,6 +112,7 @@ def get_m3u_path_and_list_paths():
 
 window = customtkinter.CTk()
 window.geometry("700x800")
+window.resizable(False, False)
 window.title("m3u copy by SBanczyk")
 label_tile = customtkinter.CTkLabel(
     window, text="m3u copier", font=("Helvetica", 70)
